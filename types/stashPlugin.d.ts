@@ -93,6 +93,7 @@ interface IPluginApi {
 /* -------------------------------------------------------------------------- */
 
 interface StashPluginComponents {
+  FrontPage: (props: IHoverPopover) => React.JSX.Element;
   HoverPopover: (props: IHoverPopover) => React.JSX.Element;
   Icon: (props: IIcon) => FontAwesomeIcon;
   "PerformerDetailsPanel.DetailGroup": (
@@ -122,6 +123,14 @@ interface PatchableComponentsBefore {
 }
 
 interface PatchableComponentsInstead {
+  (
+    component: "FrontPage",
+    fn: (
+      props: object,
+      _: object,
+      Original: React.JSX
+    ) => React.JSX.Element[]
+  ): void;
   (
     component: "PerformerDetailsPanel.DetailGroup",
     fn: (
